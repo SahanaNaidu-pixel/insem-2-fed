@@ -1,0 +1,629 @@
+:root {
+  color-scheme: light;
+  --bg: #fafaf7;
+  --text: #0e0f12;
+  --muted: #565862;
+  --line: #d6d6d0;
+  --accent: #1d3fd8;
+  --accent-text: #ffffff;
+  --brand: #1d3fd8;
+  --band: #0e0f12;
+  --live: #d3201a;
+  --display: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --reading: 'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0e0f12;
+  --text: #f4f4f0;
+  --muted: #a6a8b0;
+  --line: #34363e;
+  --accent: #8ea2ff;
+  --accent-text: #0e0f12;
+  --brand: #16246e;
+  --band: #181a20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--display);
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--display);
+  line-height: 1.05;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Dark panels re-point the tokens so everything inside adapts on its own. */
+.section-sports {
+  --text: #f4f4f0;
+  --muted: #a6a8b0;
+  --line: #34363e;
+  --accent: #8ea2ff;
+  --accent-text: #0e0f12;
+  color: var(--text);
+  background: var(--band);
+}
+
+.ticker,
+.footer {
+  --text: #ffffff;
+  --muted: #d5dcff;
+  --line: rgba(255, 255, 255, 0.3);
+  --accent: #ffffff;
+  --accent-text: var(--brand);
+  color: var(--text);
+  background: var(--brand);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  font: 700 0.85rem var(--display);
+  text-decoration: none;
+  white-space: nowrap;
+  border: 2px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.btn:hover {
+  box-shadow: 3px 3px 0 var(--text);
+  transform: translate(-2px, -2px);
+}
+
+.btn:active {
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-small {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+}
+
+.btn-primary {
+  color: var(--accent-text);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-ghost {
+  color: inherit;
+  background: transparent;
+  border-color: currentColor;
+}
+
+.chip {
+  padding: 6px 12px;
+  font: 700 0.8rem var(--display);
+  color: var(--text);
+  background: transparent;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--text);
+}
+
+.chip.is-active {
+  color: var(--accent-text);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Header */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.topbar .btn {
+  color: var(--text);
+}
+
+.masthead {
+  padding-bottom: 14px;
+}
+
+.masthead h1 {
+  /* The wordmark is about 7.6em wide, so this fits it to the container. */
+  font-size: min(calc((100vw - 32px) / 7.7), 9.8rem);
+  font-stretch: 125%;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.masthead p {
+  margin-top: 8px;
+  font-family: var(--reading);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.nav-links a {
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.ticker-label {
+  flex: none;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  background: var(--accent);
+}
+
+.ticker-window {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  font-size: 0.88rem;
+  font-weight: 500;
+  animation: ticker 32s linear infinite;
+}
+
+.ticker-track.is-paused {
+  animation-play-state: paused;
+}
+
+/* Half the track is the repeat, so -50% with half a gap loops seamlessly. */
+@keyframes ticker {
+  to {
+    transform: translateX(calc(-50% - 24px));
+  }
+}
+
+/* Sections */
+.section {
+  padding: 48px 0 56px;
+  scroll-margin-top: 8px;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.section-head h2 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.eyebrow,
+.kicker {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.empty {
+  padding: 32px;
+  font-family: var(--reading);
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--muted);
+  border-top: 6px solid var(--text);
+}
+
+.meta {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Headlines: flex so a short filtered list always fills the row. */
+.story-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 28px;
+}
+
+.story {
+  display: flex;
+  flex: 1 1 240px;
+  flex-direction: column;
+  min-width: 0;
+  padding-top: 12px;
+  border-top: 3px solid var(--text);
+}
+
+.story-lead {
+  flex-basis: 100%;
+  padding-top: 20px;
+  border-top-width: 6px;
+}
+
+.story-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.story h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.story-text {
+  font-family: var(--reading);
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.story-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.story-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.story-lead .story-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-rows: auto auto auto 1fr;
+  gap: 12px 40px;
+}
+
+.story-lead .kicker {
+  grid-column: 1 / -1;
+}
+
+.story-lead h3 {
+  grid-row: 2 / span 3;
+  font-size: clamp(2.2rem, 5.4vw, 4.6rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.story-lead .story-text {
+  grid-column: 2;
+  font-size: 1.25rem;
+}
+
+.story-lead .story-foot {
+  grid-column: 2;
+  grid-row: 4;
+  align-self: end;
+}
+
+/* Sports */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.match {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 3px solid var(--text);
+}
+
+.match-top,
+.match-foot,
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.team {
+  font-weight: 600;
+}
+
+.team strong {
+  font-size: 2rem;
+  font-weight: 900;
+  font-stretch: 75%;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.match-foot {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.status.is-live {
+  padding: 1px 8px;
+  color: #ffffff;
+  background: var(--live);
+}
+
+.status.is-live::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.sport-list {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.sport-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+
+.tag {
+  flex: none;
+  width: 84px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1.6fr;
+  gap: 32px;
+}
+
+.footer h2 {
+  margin-bottom: 8px;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.footer h3 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.footer p {
+  color: var(--muted);
+}
+
+.footer-grid a {
+  display: block;
+  padding: 3px 0;
+  color: var(--muted);
+}
+
+.footer-grid a:hover {
+  color: var(--text);
+}
+
+.newsletter {
+  scroll-margin-top: 8px;
+}
+
+.newsletter label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.newsletter-row {
+  display: flex;
+  gap: 8px;
+}
+
+.newsletter input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  font: inherit;
+  color: #0e0f12;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 0;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 860px) {
+  .footer-grid,
+  .story-lead .story-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .story-lead h3,
+  .story-lead .story-text,
+  .story-lead .story-foot {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .section {
+    padding: 32px 0 40px;
+  }
+}
+
+/* The nav already links to the newsletter, so keep it on one line here. */
+@media (max-width: 480px) {
+  .nav .btn {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-track,
+  .status.is-live::before {
+    animation: none;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
